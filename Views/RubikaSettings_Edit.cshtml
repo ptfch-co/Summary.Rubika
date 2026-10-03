@@ -1,0 +1,31 @@
+@model Summary.Rubika.RubikaSettings
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>آدرس وب‌هوک</label>
+            <input class="form-control" type="text" value="@Model.ActiveEndpoint" disabled/>
+            <span class="hint">
+                در این فیلد شما میتوانید آدرس وب هوکی که درخواست‌ها به آن ارسال میگردد را مشاهده کنید. توجه شود بعد از هر بار کلیک بر روی دکمه ذخیره در این صفحه، این فیلد خودکار بروزرسانی خواهد شد.
+            </span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label asp-for="Token">توکن</label>
+            <input class="form-control" type="text" asp-for="Token"/>
+            <span class="hint">
+                از طریق این فیلد توکنی که قصد دارید سامری از طریق آن به بات روبیکا متصل شود را درج نمایید.
+            </span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label asp-for="FirstReplayMessage">متن پاسخگو عضویت در بات</label>
+            <textarea rows="1" class="form-control" type="text" asp-for="FirstReplayMessage"></textarea>
+            <span class="hint">
+                اگر قصد دارید بعد از عضویت کاربر در بات یک پیغام خودکار برای آن کاربر ارسال گردد میتوانید متن خود را در این فیلد درج نمایید. پس از عضویت، متن به صورت خودکار برای کاربر ارسال خواهد شد.
+            </span>
+        </div>
+    </div>
+</div>
