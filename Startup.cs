@@ -9,7 +9,9 @@ namespace Summary.Rubika
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Options;
     using Summary.Query.Services;
+    using Summary.Rubika.Services;
     using Summary.Rubika.Workflows.Event.Bot.Message.Receive;
+    using Summary.Rubika.Workflows.Task.Bot.Message.Send;
 
     [Feature(Rubika.Feature.Rubika)]
     public class Startup : StartupBase
@@ -26,10 +28,12 @@ namespace Summary.Rubika
             services.AddScoped<IPermissionProvider, Permissions>();
             services.AddScoped<IDisplayDriver<ISite>, RubikaSettingsDisplayDriver>();
             services.AddScoped<IQueryService, QueryService>();
+            services.AddScoped<IBotService, BotService>();
 
             services.AddTransient<IConfigureOptions<RubikaSettings>, RubikaSettingsConfiguration>();
 
             services.AddActivity<ReceiveBotMessageRubikaEvent, ReceiveBotMessageRubikaEventDisplay>();
+            services.AddActivity<SendBotMessageInRubikaTask, SendBotMessageInRubikaDisplay>();
         }
     }
 }
