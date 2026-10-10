@@ -1,4 +1,4 @@
-namespace Summary.Rubika.Workflows.Task.Bot.Message.Send
+namespace Summary.Rubika.Workflows.Task.PV.Message.Send
 {
     using Core.Workflows.Abstractions.Models;
     using Core.Workflows.Activities;
@@ -9,19 +9,19 @@ namespace Summary.Rubika.Workflows.Task.Bot.Message.Send
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public class SendBotMessageInRubikaTask : TaskActivity
+    public class SendPVMessageInRubikaTask : TaskActivity
     {
-        private readonly IStringLocalizer<SendBotMessageInRubikaTask> T;
+        private readonly IStringLocalizer<SendPVMessageInRubikaTask> T;
         private IBotService _bot;
 
-        public SendBotMessageInRubikaTask(IStringLocalizer<SendBotMessageInRubikaTask> t,
+        public SendPVMessageInRubikaTask(IStringLocalizer<SendPVMessageInRubikaTask> t,
             IBotService bot)
         {
             T = t;
             _bot = bot;
         }
 
-        public override string Name => nameof(SendBotMessageInRubikaTask);
+        public override string Name => nameof(SendPVMessageInRubikaTask);
 
         public override LocalizedString DisplayText => T[Rubika.Localization.SOfSendMessage];
 

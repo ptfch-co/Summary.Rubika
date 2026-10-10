@@ -1,4 +1,4 @@
-namespace Summary.Rubika.Workflows.Task.Bot.Message.Send
+namespace Summary.Rubika.Workflows.Task.Channel.Message.Send
 {
     using Core.Workflows.Abstractions.Models;
     using Core.Workflows.Activities;
@@ -9,21 +9,21 @@ namespace Summary.Rubika.Workflows.Task.Bot.Message.Send
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public class SendBotMessageInRubikaTask : TaskActivity
+    public class SendChannelMessageInRubikaTask : TaskActivity
     {
-        private readonly IStringLocalizer<SendBotMessageInRubikaTask> T;
+        private readonly IStringLocalizer<SendChannelMessageInRubikaTask> T;
         private IBotService _bot;
 
-        public SendBotMessageInRubikaTask(IStringLocalizer<SendBotMessageInRubikaTask> t,
+        public SendChannelMessageInRubikaTask(IStringLocalizer<SendChannelMessageInRubikaTask> t,
             IBotService bot)
         {
             T = t;
             _bot = bot;
         }
 
-        public override string Name => nameof(SendBotMessageInRubikaTask);
+        public override string Name => nameof(SendChannelMessageInRubikaTask);
 
-        public override LocalizedString DisplayText => T[Rubika.Localization.SOfSendMessage];
+        public override LocalizedString DisplayText => T[Rubika.Localization.SOfSendChannelMessage];
 
         public override LocalizedString Category => T[Rubika.Public.Category];
 

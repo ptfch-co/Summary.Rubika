@@ -40,7 +40,9 @@ namespace Summary.Rubika.Services
             );
 
             else SendFileMessage(
-
+                text,
+                file,
+                chat_id
             );
         }
 
@@ -67,9 +69,10 @@ namespace Summary.Rubika.Services
             );
         }
 
-        private void SendFileMessage()
+        private void SendFileMessage(string text,
+            string file,
+            string chat_id)
         {
-
         }
     }
 }

@@ -11,7 +11,9 @@ namespace Summary.Rubika
     using Summary.Query.Services;
     using Summary.Rubika.Services;
     using Summary.Rubika.Workflows.Event.Bot.Message.Receive;
-    using Summary.Rubika.Workflows.Task.Bot.Message.Send;
+    using Summary.Rubika.Workflows.Task.Channel.Message.Send;
+    using Summary.Rubika.Workflows.Task.Group.Message.Send;
+    using Summary.Rubika.Workflows.Task.PV.Message.Send;
 
     [Feature(Rubika.Feature.Rubika)]
     public class Startup : StartupBase
@@ -33,7 +35,9 @@ namespace Summary.Rubika
             services.AddTransient<IConfigureOptions<RubikaSettings>, RubikaSettingsConfiguration>();
 
             services.AddActivity<ReceiveBotMessageRubikaEvent, ReceiveBotMessageRubikaEventDisplay>();
-            services.AddActivity<SendBotMessageInRubikaTask, SendBotMessageInRubikaDisplay>();
+            services.AddActivity<SendChannelMessageInRubikaTask, SendChannelMessageInRubikaDisplay>();
+            services.AddActivity<SendGroupMessageInRubikaTask, SendGroupMessageInRubikaDisplay>();
+            services.AddActivity<SendPVMessageInRubikaTask, SendPVMessageInRubikaDisplay>();
         }
     }
 }
