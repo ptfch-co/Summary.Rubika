@@ -3,9 +3,7 @@
 @inject Microsoft.Extensions.Options.IOptions<Summary.Rubika.RubikaSettings> Options
 
 <div class="row">
-    <div class="col-md-3">
-       
-    </div>
+   
     <div class="col-md-3">
         <div class="form-group" asp-validation-class-for="Chat_Id">
             <label asp-for="Chat_Id">
@@ -15,27 +13,27 @@
             <input type="text" asp-for="Chat_Id" class="form-control" />
             <span class="hint"> شناسه کانال Rubika که قصد دارید پیغام برای آن ارسال شود را درج
                 نمایید.</span>
+            </div>
+            <div class="form-group" asp-validation-class-for="Text">
+                <label asp-for="Text">
+                    متن پیام
+                    <span class="text-danger">*</span>
+                </label>
+                <textarea rows="7" asp-for="Text" class="form-control"></textarea>
+                <span class="hint">متن پیغامی که قصد دارید برای کانال Rubika ارسال شود را در این
+                    فیلد درج نمایید.</span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group" asp-validation-class-for="File">
+                    <label asp-for="File">
+                        لینک فایل
+                    </label>
+                    <input type="text" asp-for="File" class="form-control" />
+                    <span class="hint">
+                        در این فیلد لینک مستقیم فایل مورد نظر جهت ارسال به مخاطب را وارد کنید. لطفاً تنها لینک فایل درج شود و از
+                        ثبت سایر لینک‌های وب خودداری نمایید.
+                    </span>
+                </div>
+            </div>
         </div>
-        <div class="form-group" asp-validation-class-for="Text">
-            <label asp-for="Text">
-                متن پیام
-                <span class="text-danger">*</span>
-            </label>
-            <textarea rows="7" asp-for="Text" class="form-control"></textarea>
-            <span class="hint">متن پیغامی که قصد دارید برای کانال Rubika ارسال شود را در این
-                فیلد درج نمایید.</span>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="form-group" asp-validation-class-for="File">
-            <label asp-for="File">
-                لینک فایل
-            </label>
-            <input type="text" asp-for="File" class="form-control" />
-            <span class="hint">
-                در این فیلد لینک مستقیم فایل مورد نظر جهت ارسال به مخاطب را وارد کنید. لطفاً تنها لینک فایل درج شود و از
-                ثبت سایر لینک‌های وب خودداری نمایید.
-            </span>
-        </div>
-    </div>
-</div>

@@ -39,4 +39,24 @@ namespace Summary.Rubika
 
     public class SendMessageResponseInfo : BaseResponseInfo
     { }
+
+    public class RequestSendFileResponseInfo : BaseResponseInfo
+    {
+        public RequestSendFileData Data { get; set; }
+    }
+
+    public class RequestSendFileData
+    {
+        public string Upload_Url { get; set; }
+    }
+
+    public class UploadFileResponseInfo : BaseResponseInfo
+    {
+        public UploadFileData Data { get; set; }
+    }
+
+    public class UploadFileData
+    {
+        public string File_Id { get; set; }
+    }
 }
