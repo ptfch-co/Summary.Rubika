@@ -1,0 +1,14 @@
+@model ActivityViewModel<Summary.Rubika.Workflows.Task.Channel.Message.Send.SendChannelMessageInRubikaTask>
+@using Core.Workflows.Helpers
+@using Core.Workflows.ViewModels
+@using Summary.Rubika
+
+<header>
+    <h4>
+        @Model.Activity.GetTitleOrDefault(() =>  T[Rubika.Localization.SOfSendChannelMessage])
+        
+    </h4>
+    <em>
+        &quot;Rubika - Send Channel Message&quot;
+    </em>
+</header>
