@@ -134,13 +134,23 @@ namespace Summary.Rubika.Services
         {
             var ext = Path.GetExtension(fileName).ToLowerInvariant();
 
-            return ext switch
+            switch (ext)
             {
-                ".jpg" or ".jpeg" or ".png" or ".webp" => "Image",
-                ".mp4" => "Video",
-                ".mp3" => "Music",
-                _ => "File"
-            };
+                case ".jpg":
+                case ".jpeg":
+                case ".png":
+                case ".webp":
+                    return "Image";
+
+                case ".mp4":
+                    return "Video";
+
+                case ".mp3":
+                    return "Music";
+
+                default:
+                    return "File";
+            }
         }
 
         private static void CheckStatus(Status status, object data)

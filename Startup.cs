@@ -25,6 +25,7 @@ namespace Summary.Rubika
                 options.AddPolicy("Everywhere", builder =>
                     builder.WithOrigins("*").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
+            services.AddMemoryCache();
 
             services.AddScoped<INavigationProvider, Menu>();
             services.AddScoped<IPermissionProvider, Permissions>();
