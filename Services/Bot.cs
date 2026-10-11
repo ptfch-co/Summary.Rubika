@@ -79,22 +79,22 @@ namespace Summary.Rubika.Services
             string file,
             string chat_id)
         {
-            var baseUrl = $"https://botapi.rubika.ir/v3/{_options.Token}";
             var fileName = Path.GetFileName(new Uri(file).LocalPath);
+
             if (string.IsNullOrEmpty(fileName)) fileName = "downloaded_file";
 
-            var fileType = GetFileType(fileName);
+            var file_type = GetFileType(fileName);
 
-            if (!_memory.TryGetValue(file, out string fileId))
+            if (!_memory.TryGetValue(file, out string file_Id))
             {
-                var requestData = new { type = fileType };
+                var requestData = new { type = file_type };
 
                 var uploadInfo = await _client.SendPostRequestAsync<RequestSendFileResponseInfo>(
-                    $"{baseUrl}/requestSendFile",
+                    $"https://botapi.rubika.ir/v3/{_options.Token}/requestSendFile",
                     requestData
                 );
 
-                CheckStatus(uploadInfo.Status, requestData);
+                ThrowExceptionIf.UploadFileIsNotOk(uploadInfo.Status, requestData);
 
                 using var stream = await _client.SendGetRequestAsync<Stream>(file);
 
@@ -108,29 +108,29 @@ namespace Summary.Rubika.Services
                     formData
                 );
 
-                CheckStatus(uploadResult.Status, new { uploadInfo.Data.Upload_Url });
+                ThrowExceptionIf.UploadFileIsNotOk(uploadResult.Status, new { uploadInfo.Data.Upload_Url });
 
-                fileId = uploadResult.Data.File_Id;
+                file_Id = uploadResult.Data.File_Id;
 
-                _memory.Set(file, fileId, TimeSpan.FromHours(24));
+                _memory.Set(file, file_Id, TimeSpan.FromHours(24));
             }
 
             var data = new
             {
                 chat_id = chat_id,
-                file_id = fileId,
+                file_id = file_Id,
                 text = text
             };
 
             var response = await _client.SendPostRequestAsync<SendMessageResponseInfo>(
-                $"{baseUrl}/sendFile",
+                $"https://botapi.rubika.ir/v3/{_options.Token}/sendFile",
                 data
             );
 
-            CheckStatus(response.Status, data);
+            ThrowExceptionIf.UploadFileIsNotOk(response.Status, data);
         }
 
-        private static string GetFileType(string fileName)
+        private string GetFileType(string fileName)
         {
             var ext = Path.GetExtension(fileName).ToLowerInvariant();
 
@@ -151,17 +151,6 @@ namespace Summary.Rubika.Services
                 default:
                     return "File";
             }
-        }
-
-        private static void CheckStatus(Status status, object data)
-        {
-            if (status != Status.OK) throw new WorkflowException(
-                status.ToString(),
-                null,
-                JsonConvert.SerializeObject(data),
-                "کاربر گرامی؛ خطاء ناشناخته رخ داده است. درخواست میشود باگ را به واحد پشتیبانی گزارش دهید.",
-                Level.Error
-            );
         }
     }
 }
