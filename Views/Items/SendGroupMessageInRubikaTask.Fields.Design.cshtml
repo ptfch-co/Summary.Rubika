@@ -1,0 +1,13 @@
+@model ActivityViewModel<Summary.Rubika.Workflows.Task.Group.Message.Send.SendGroupMessageInRubikaTask>
+@using Core.Workflows.Helpers
+@using Core.Workflows.ViewModels
+@using Summary.Rubika
+
+<header>
+    <h4>
+        @Model.Activity.GetTitleOrDefault(() => T[Rubika.Localization.SOfSendGroupMessage])
+    </h4>
+    <em>
+        &quot;Rubika - Send Group Message&quot;
+    </em>
+</header>
